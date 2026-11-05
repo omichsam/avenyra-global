@@ -1,0 +1,151 @@
+/* Brand tokens shared by the applicant and admin screens. The marketing pages
+   define the same palette under .page in LandingPage.module.css. The
+   --path-gold* names are historical; they now carry the brand orange. */
+:root {
+  --ink: #1C1830;
+  --ink-soft: #453F6B;
+  --paper: #FAF8FB;
+  --line: #E6E1EC;
+  --indigo: #271E60;
+  --path-gold: #DF6E28;
+  --path-gold-deep: #A84612;
+  --path-gold-tint: rgba(223, 110, 40, 0.12);
+  --danger: #B42318;
+  --danger-tint: #FDF1F0;
+  --success: #267345;
+}
+
+:root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1c1830;
+  background: #faf8fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { width: 100%; min-width: 0; min-height: 100%; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .65; }
+a { color: #7149cc; }
+
+.route-loading { padding: 48px; color: #453f6b; }
+.form-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+  background: linear-gradient(135deg, #faf8fb, #f5f0e7);
+}
+.form-card {
+  width: min(100%, 440px);
+  padding: 36px;
+  border: 1px solid #e6e1ec;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 16px 48px #271e6012;
+}
+.form-brand { display: inline-block; margin-bottom: 22px; color: #271e60; font-weight: 700; text-decoration: none; }
+.form-card h1, .workflow-page h1 { margin: 0 0 8px; color: #271e60; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-weight: 700; letter-spacing: -.01em; }
+.form-card > p, .workflow-heading p { color: #625c70; }
+.form-card form, .workflow-card form { display: grid; gap: 16px; margin: 24px 0; }
+.form-card label, .workflow-card label { display: grid; gap: 7px; color: #38334b; font-size: 14px; font-weight: 600; }
+.form-card input, .form-card select, .form-card textarea,
+.workflow-card input, .workflow-card select, .workflow-card textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #dcd7e4;
+  border-radius: 8px;
+  background: #fff;
+  color: #1c1830;
+}
+.form-card button[type="submit"], .workflow-card button:not(.button-secondary), .workflow-page > button:not(.button-secondary) {
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #df6e28;
+  color: white;
+  font-weight: 600;
+}
+.form-card button:disabled, .workflow-card button:disabled { opacity: .6; }
+.form-card > a:last-child { display: inline-block; margin-top: 20px; }
+.form-switch { font-size: 14px; }
+.error-reload { min-height: 42px; padding: 10px 16px; border: 0; border-radius: 8px; background: #df6e28; color: white; font-weight: 600; }
+.form-card label.form-consent { display: flex; align-items: flex-start; gap: 10px; color: #4f4963; font-size: 13px; font-weight: 400; line-height: 1.5; }
+.form-card label.form-consent input { width: auto; min-height: 0; margin-top: 3px; flex-shrink: 0; }
+.text-button { padding: 0; border: 0; background: none; color: #7149cc; text-decoration: underline; }
+.form-error { color: #b42318; }
+.form-message { color: #267345; }
+
+.workflow-page { width: min(100% - 32px, 900px); margin: 40px auto 80px; color: #1c1830; }
+.workflow-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+.workflow-heading > span { color: #625c70; font-size: 14px; }
+.workflow-steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.workflow-steps button { padding: 9px 12px; border: 1px solid #e3deea; border-radius: 8px; background: white; color: #453f6b; }
+.workflow-steps button.active { border-color: #7149cc; background: #f0ebfb; color: #36115c; }
+.workflow-card { padding: 28px; border: 1px solid #e3deea; border-radius: 14px; background: white; }
+.workflow-card h2 { margin: 0 0 20px; color: #271e60; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-weight: 700; letter-spacing: -.01em; }
+.workflow-card p { color: #625c70; }
+.workflow-actions { display: flex; align-items: center; gap: 10px; margin-top: 24px; }
+.workflow-actions button { min-width: 130px; }
+.workflow-actions .button-secondary, .button-secondary {
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid #dcd7e4;
+  border-radius: 8px;
+  background: white;
+  color: #38334b;
+}
+.workflow-card button.button-danger { background: #b42318; }
+.workflow-card button.text-button { min-height: 0; padding: 0; border: 0; background: none; color: #7149cc; font-weight: 600; }
+.review-warning { display: grid; gap: 8px; margin: 20px 0; padding: 14px 16px; border: 1px solid #f0c9a8; border-radius: 10px; background: #fdf4ec; color: #6b3a12; }
+.review-warning p { margin: 0; color: inherit; }
+.review-warning-links { display: flex; flex-wrap: wrap; gap: 16px; }
+.workflow-page > .workflow-card + .workflow-card { margin-top: 20px; }
+.workflow-page > .button-secondary { margin-top: 20px; }
+.workflow-hint { color: #625c70; font-size: 13px; }
+.uploaded-file { padding: 10px 12px; border-radius: 8px; background: #f0ebfb; }
+.review-list { display: grid; gap: 12px; margin: 0; }
+.review-list div { display: grid; grid-template-columns: 180px 1fr; gap: 12px; }
+.review-list dt { color: #625c70; }
+.review-list dd { margin: 0; font-weight: 600; }
+
+.admin-layout { min-height: 100vh; background: var(--paper); }
+.admin-header { display: flex; align-items: center; gap: 28px; padding: 16px 28px; border-bottom: 1px solid var(--line); background: white; }
+.admin-header > strong { color: #271e60; white-space: nowrap; }
+.admin-header > strong span { color: var(--path-gold-deep); }
+.admin-header nav { display: flex; flex: 1; flex-wrap: wrap; gap: 18px; }
+.admin-header nav a { color: var(--ink-soft); text-decoration: none; font-size: 14px; }
+.admin-header nav a.active { color: var(--path-gold-deep); font-weight: 700; }
+.admin-header-actions { display: flex; align-items: center; gap: 16px; }
+.admin-header-actions a { color: var(--ink-soft); font-size: 14px; text-decoration: none; }
+.admin-content { width: min(1200px, 100% - 48px); margin: 32px auto; }
+.admin-content, .workflow-page, .form-card { animation: screen-enter .35s ease both; }
+@keyframes screen-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .form-card { padding: 26px 20px; }
+  .workflow-card { padding: 20px; }
+  .workflow-heading { flex-direction: column; }
+  .admin-header { align-items: flex-start; flex-wrap: wrap; gap: 14px; padding: 16px; }
+  .admin-header nav { order: 3; flex-basis: 100%; gap: 12px; }
+  .admin-header nav a { padding: 6px 0; }
+  .admin-content { width: min(100% - 28px, 1200px); margin: 20px auto; }
+  .review-list div { grid-template-columns: 1fr; gap: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .admin-content, .workflow-page, .form-card { animation: none; }
+}

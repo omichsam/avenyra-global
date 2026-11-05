@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /superadmin/
+Disallow: /dashboard
+Disallow: /apply
+Disallow: /account
+Disallow: /reset-password
+
+Sitemap: https://avenyraglobal.com/sitemap.xml
