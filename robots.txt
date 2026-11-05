@@ -5,5 +5,7 @@ Disallow: /dashboard
 Disallow: /apply
 Disallow: /account
 Disallow: /reset-password
+Disallow: /forgot-password
+Disallow: /login
 
 Sitemap: https://avenyraglobal.com/sitemap.xml
