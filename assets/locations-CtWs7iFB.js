@@ -1,0 +1,1 @@
+var e=[`Nairobi`,`Mombasa`,`Kisumu`,`Nakuru`,`Eldoret`,`Thika`,`Machakos`,`Nyeri`,`Meru`,`Kakamega`,`Kisii`,`Kitale`,`Malindi`,`Naivasha`,`Kericho`,`Embu`,`Garissa`,`Remote (Kenya)`,`Outside Kenya`],t=`location-suggestions`,n=String.raw`\+?[0-9\(][0-9\s\-\(\)]{6,19}`,r=`+254 712 345 678`;export{r as i,e as n,n as r,t};
