@@ -28,3 +28,6 @@ dist-server
 .env
 .env.*
 !.env.example
+
+# Editor preview extension helper
+.php-preview-router.php

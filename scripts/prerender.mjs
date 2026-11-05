@@ -18,7 +18,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
 const server = await import(pathToFileURL(path.join(root, 'dist-server', 'entry-server.js')).href)
-const { render, PRERENDER_ROUTES, ORGANIZATION_JSON_LD, SITE_URL, DEFAULT_DESCRIPTION, fullTitle, canonicalUrl } = server
+const { render, PRERENDER_ROUTES, structuredData, SITE_URL, DEFAULT_DESCRIPTION, fullTitle, canonicalUrl } = server
 
 const template = await fs.readFile(path.join(dist, 'index.html'), 'utf8')
 const ROOT_DIV = '<div id="root"></div>'
@@ -46,6 +46,8 @@ function withHead(html, pathname, meta) {
   html = replaceTag(html, /<meta property="og:title" content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${title}" />`, 'og:title')
   html = replaceTag(html, /<meta property="og:description" content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${description}" />`, 'og:description')
   html = replaceTag(html, /<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`, 'og:url')
+  html = replaceTag(html, /<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${title}" />`, 'twitter:title')
+  html = replaceTag(html, /<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${description}" />`, 'twitter:description')
   return html
 }
 
@@ -55,12 +57,17 @@ let shell = replaceTag(template, /<meta name="robots" content="[^"]*"\s*\/?>/, '
 shell = shell.replace(/\s*<link rel="canonical" href="[^"]*"\s*\/?>/, '')
 await fs.writeFile(path.join(dist, 'app.html'), shell)
 
-// 2. One HTML file per public page.
-const jsonLd = `<script type="application/ld+json">${JSON.stringify(ORGANIZATION_JSON_LD).replace(/</g, '\\u003c')}</script>`
+// 2. One HTML file per public page, each with its structured data
+//    (organization and website on the homepage, breadcrumbs elsewhere).
+function jsonLdTags(pathname, meta) {
+  return structuredData(pathname, meta)
+    .map((block) => `    <script type="application/ld+json">${JSON.stringify(block).replace(/</g, '\\u003c')}</script>`)
+    .join('\n')
+}
 for (const { path: pathname, meta } of PRERENDER_ROUTES) {
   const appHtml = render(pathname)
   let html = withHead(template, pathname, meta).replace(ROOT_DIV, `<div id="root">${appHtml}</div>`)
-  if (pathname === '/') html = html.replace('</head>', `    ${jsonLd}\n  </head>`)
+  if (!meta.noindex) html = html.replace('</head>', `${jsonLdTags(pathname, meta)}\n  </head>`)
   const file = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, `${pathname.slice(1)}.html`)
   await fs.mkdir(path.dirname(file), { recursive: true })
   await fs.writeFile(file, html)

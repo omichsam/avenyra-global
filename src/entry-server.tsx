@@ -16,6 +16,7 @@ export {
   ORGANIZATION_JSON_LD,
   PRERENDER_ROUTES,
   SITE_URL,
+  structuredData,
 } from './lib/seo'
 
 export function render(url: string) {

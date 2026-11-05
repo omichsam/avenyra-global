@@ -4,6 +4,8 @@ The public marketing site for Avenyra Global plus the applicant and admin portal
 
 React 19 + TypeScript + Vite, deployed on Vercel. The API is a separate FastAPI service ([avenyar-global-server on Render](https://avenyar-global-server.onrender.com/docs)) and is **not** in this repository.
 
+**How the portals and backend work, step by step:** see [docs/PROCESSES.md](docs/PROCESSES.md) (sign-in, applicant application, admin review, superadmin tools, CV uploads, API endpoints and a go-live checklist).
+
 ## Getting started
 
 ```bash
@@ -19,6 +21,7 @@ The backend is on Render's free tier and sleeps when idle — the first request 
 | --- | --- |
 | `npm run dev` | Dev server with the API proxy |
 | `npm run build` | Type-check, build to `dist/`, then prerender the public pages (see SEO below) |
+| `npm run build:pages` | Same build for GitHub Pages, served from `/avenyra-global/` (see docs/PROCESSES.md, section 9) |
 | `npm run preview` | Serve the production build locally (its fallback differs from Vercel's; see SEO) |
 | `npm test` | Run unit tests once (Vitest) |
 | `npm run test:watch` | Run tests in watch mode |

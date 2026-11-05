@@ -22,7 +22,8 @@ function setCanonical(href: string) {
   link.href = href
 }
 
-// Keeps the tab title, description, canonical URL and social tags in step with
+// Keeps the tab title, description, canonical URL and social (Open Graph and
+// Twitter/X) tags in step with
 // the current page as people navigate. Public pages also get these baked into
 // their prerendered HTML (scripts/prerender.mjs) for crawlers that don't run JS.
 // `noindex` keeps private screens (dashboards, auth forms) out of search.
@@ -39,6 +40,8 @@ export function usePageMeta(meta: PageMeta) {
     setMeta('meta[property="og:title"]', 'property', 'og:title', titleText)
     setMeta('meta[property="og:description"]', 'property', 'og:description', description ?? DEFAULT_DESCRIPTION)
     setMeta('meta[property="og:url"]', 'property', 'og:url', url)
+    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', titleText)
+    setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description ?? DEFAULT_DESCRIPTION)
     setCanonical(url)
   }, [title, description, noindex, pathname])
 }

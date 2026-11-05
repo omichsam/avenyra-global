@@ -18,7 +18,7 @@ export default function Footer() {
         <div className={styles.footCta}>
           <div>
             <span className={styles.footCtaEyebrow}>Let&rsquo;s talk</span>
-            <h3>Ready to build your team in Kenya?</h3>
+            <h2>Ready to build your team in Kenya?</h2>
             <p>Tell us what you need. We&rsquo;ll come back with a clear, compliant plan.</p>
           </div>
           <div className={styles.footCtaActions}>
@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           <nav className={styles.footCol} aria-label="Solutions">
-            <h4>Solutions</h4>
+            <h2>Solutions</h2>
             <ul>
               {servicePillars.map((pillar) => (
                 <li key={pillar.id}><Link to={`/#${pillar.id}`}>{pillar.title}</Link></li>
@@ -54,7 +54,7 @@ export default function Footer() {
           </nav>
 
           <nav className={styles.footCol} aria-label="Company">
-            <h4>Company</h4>
+            <h2>Company</h2>
             <ul>
               <li><Link to="/#who-we-serve">Who We Serve</Link></li>
               <li><Link to="/#how-we-work">How We Work</Link></li>
@@ -66,7 +66,7 @@ export default function Footer() {
           </nav>
 
           <div className={styles.footCol}>
-            <h4>Get in Touch</h4>
+            <h2>Get in Touch</h2>
             <ul className={styles.footContact}>
               <li><span className={styles.footContactIcon}><PinIcon /></span>{CONTACT.location}</li>
               <li>

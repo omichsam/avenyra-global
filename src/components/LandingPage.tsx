@@ -176,12 +176,15 @@ export default function LandingPage() {
       <section className={styles.section} style={{ paddingTop: 88 }}>
         <div className={`${styles.wrap} ${styles.workforceSplit}`}>
           <Reveal className={styles.workforceMedia}>
-            <div
-              className={styles.workforcePhoto}
-              style={{ backgroundImage: `url(${NAIROBI_OFFICE_PHOTO})` }}
-              role="img"
-              aria-label="Professional working at a laptop in a Nairobi office"
-            />
+            <div className={styles.workforcePhoto}>
+              <img
+                src={NAIROBI_OFFICE_PHOTO}
+                alt="Professional working at a laptop in a Nairobi office"
+                width={1400}
+                height={785}
+                loading="lazy"
+              />
+            </div>
             <div className={styles.workforceBadge}>
               <span className={styles.workforceBadgeIcon}><TeamIcon /></span>
               <span>
@@ -296,21 +299,29 @@ export default function LandingPage() {
       <section id="why-kenya" className={styles.section}>
         <div className={`${styles.wrap} ${styles.why}`}>
           <Reveal className={styles.mosaic}>
-            <div
-              className={`${styles.mosaicTile} ${styles.mosaicMain}`}
-              style={{ backgroundImage: `url(${NAIROBI_SKYLINE_PHOTO})` }}
-              role="img"
-              aria-label="Nairobi city skyline"
-            >
+            <div className={`${styles.mosaicTile} ${styles.mosaicMain}`}>
+              <img
+                className={styles.mosaicImg}
+                src={NAIROBI_SKYLINE_PHOTO}
+                alt="Nairobi city skyline with the Kenyatta International Convention Centre"
+                width={1200}
+                height={900}
+                loading="lazy"
+              />
               <div className={styles.whyVisualTag}><PinIcon size={14} /> Headquartered in Nairobi</div>
               <h3>Access Kenyan talent through trusted local workforce expertise.</h3>
             </div>
-            <div
-              className={styles.mosaicTile}
-              style={{ backgroundImage: `url(${WORKFORCE_COLLEAGUES_PHOTO})`, backgroundPosition: "center 85%" }}
-              role="img"
-              aria-label="Three colleagues talking around a meeting table"
-            />
+            <div className={styles.mosaicTile}>
+              <img
+                className={styles.mosaicImg}
+                src={WORKFORCE_COLLEAGUES_PHOTO}
+                alt="Three colleagues talking around a meeting table"
+                width={900}
+                height={600}
+                loading="lazy"
+                style={{ objectPosition: 'center 85%' }}
+              />
+            </div>
             <div className={`${styles.mosaicTile} ${styles.mosaicNote}`}>
               <PinIcon size={20} />
               <b>Nairobi</b>
@@ -328,7 +339,7 @@ export default function LandingPage() {
                 <Reveal key={item.n} delay={i * 100} className={styles.whyItem}>
                   <div className={styles.whyItemNum}>{item.n}</div>
                   <div>
-                    <h4>{item.title}</h4>
+                    <h3>{item.title}</h3>
                     <p>{item.description}</p>
                   </div>
                 </Reveal>
